@@ -1,26 +1,39 @@
 /*
- * The following code needs a lot of TLC. So give it some!
- *
- * 1. Fix all checkstyle errors
- * 2. Determine what it does (it's going to be tough before you finish #1)
- * 3. Improve the name of the methods and variables
- * 4. Add comments and Javadoc comments where needed
- * 5. Remove unnecessary comments as appropriate
+ * The following code needs a lot of TLC. So give it some! 1. Fix all checkstyle errors 2. Determine
+ * what it does (it's going to be tough before you finish #1) 3. Improve the name of the methods and
+ * variables 4. Add comments and Javadoc comments where needed 5. Remove unnecessary comments as
+ * appropriate
+/*
+ * The following code needs a lot of TLC. So give it some! 1. Fix all checkstyle errors 2. Determine
+ * what it does (it's going to be tough before you finish #1) 3. Improve the name of the methods and
+ * variables 4. Add comments and Javadoc comments where needed 5. Remove unnecessary comments as
+ * appropriate
+ * @param shorterString First string to compare
+ * @param longerString Second string to compare
+ * @ return The largest common substring
  */
 
-public class ReclamationProject
-{
-    static String doit(String a,String b){
-        if (a.length() > b.length()){
-            String c = a; // TODO: set c to a
-            a=b; b=c;}
-        String r = (a.equals(b)) ? "" : ""; // I love the ternary operator!
-        /*
-         * For loop with i
-         */
-        for (int i = 0; i < a.length(); i++) { for (int j = a.length() - i; j > 0; j--) {
-                for (int k = 0; k < b.length()- j; k++) {
-                    r = (a.regionMatches(i, b, k, j) && j >r.length()) ? a.substring(i,i + j) : r; // Do it!
-                        }} // Ah yeah
-        } return r; }
+public class ReclamationProject {
+    public static String largestCommonSubstring(String param1, String param2){
+        String longerString, shorterString;
+        if (param1.length() > param2.length()){
+            longerString  = param1;
+            shorterString = param2;
+        } else {
+            longerString  = param2;
+            shorterString = param1;
+        }
+
+        String largestCommonSubstring = new String();
+        for (int i = 0; i < shorterString.length(); i++) {
+            for (int j = shorterString.length() - i; j > 0; j--) {
+                for (int k = 0; k < longerString.length()- j; k++) {
+                    if (shorterString.regionMatches(i, longerString, k, j) && j > largestCommonSubstring.length()){
+                        largestCommonSubstring = shorterString.substring(i,i + j);
+                    }
+                }
+            }
+        }
+        return largestCommonSubstring;
+    }
 }
